@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name uiApp
+ * @name acdanuiApp
  * @description
- * # uiApp
+ * # acdanuiApp
  *
  * Main module of the application.
  */
 angular
-  .module('uiApp', [
+  .module('acdanuiApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

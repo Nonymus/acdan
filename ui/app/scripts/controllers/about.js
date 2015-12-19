@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name uiApp.controller:AboutCtrl
+ * @name acdanuiApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the uiApp
+ * Controller of the acdanuiApp
  */
-angular.module('uiApp')
+angular.module('acdanuiApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
