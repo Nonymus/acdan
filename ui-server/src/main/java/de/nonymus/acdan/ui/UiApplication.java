@@ -4,6 +4,7 @@ import de.nonymus.acdan.ui.filters.CsrfHeaderFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,17 +27,12 @@ import java.util.UUID;
 @SpringBootApplication
 @RestController
 @EnableRedisHttpSession
+@EnableZuulProxy
 public class UiApplication {
 
     @RequestMapping("/user")
     public Principal user(Principal user) {
         return user;
-    }
-
-    @RequestMapping("/token")
-    @ResponseBody
-    public Map<String, String> token(HttpSession session) {
-        return Collections.singletonMap("token", session.getId());
     }
 
     /**
