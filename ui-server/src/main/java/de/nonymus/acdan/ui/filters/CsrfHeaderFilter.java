@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * Add csrf-token cookies
+ *
  * Created by jp on 20.12.15.
  */
 public class CsrfHeaderFilter extends OncePerRequestFilter {

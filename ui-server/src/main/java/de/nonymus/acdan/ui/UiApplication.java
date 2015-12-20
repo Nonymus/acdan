@@ -36,6 +36,9 @@ public class UiApplication {
         return user;
     }
 
+    /**
+     * Customize the security configuration for our custom login mechanism
+     */
     @Configuration
     @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
     protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -44,13 +47,20 @@ public class UiApplication {
             http
                     .httpBasic().and()
                     .authorizeRequests()
-                    .antMatchers("/index.html", "/main.html", "/login.html","/scripts/*", "/styles/*", "/bower_components/**/*", "/").permitAll().anyRequest()
+                    // Allow anonymous access to static content
+                    .antMatchers("/index.html", "/views/**", "/scripts/**", "/styles/**", "/bower_components/**", "/")
+                    .permitAll().anyRequest()
                     .authenticated().and()
+                    // Process csrf information
                     .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
-            .csrf().csrfTokenRepository(csrfTokenRepository());
-
+                    .csrf().csrfTokenRepository(csrfTokenRepository());
         }
 
+        /**
+         * Custom repository using the header name expected by angular (which is not the spring default)
+         *
+         * @return {@link CsrfTokenRepository} using "X-XSRF-TOKEN" header name
+         */
         private CsrfTokenRepository csrfTokenRepository() {
             HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
             repository.setHeaderName("X-XSRF-TOKEN");
