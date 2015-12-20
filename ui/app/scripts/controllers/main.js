@@ -21,6 +21,6 @@ angular.module('acdanuiApp')
         }
       }).success(function(data){
         $scope.greeting = data;
-      })
+      });
     });
   });
