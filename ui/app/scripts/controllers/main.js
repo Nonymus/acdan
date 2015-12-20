@@ -8,6 +8,9 @@
  * Controller of the acdanuiApp
  */
 angular.module('acdanuiApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $http) {
     $scope.greeting = {id: 'xxx', content: 'Hello World'};
+    $http.get('/resource/').success(function (data) {
+      $scope.greeting = data;
+    });
   });

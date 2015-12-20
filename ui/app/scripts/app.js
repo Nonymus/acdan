@@ -17,19 +17,21 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'NavigationCtrl',
+        controllerAs: 'navigation'
       })
       .otherwise({
         redirectTo: '/'
       });
+
+    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   });

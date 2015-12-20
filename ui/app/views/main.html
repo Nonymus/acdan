@@ -1,5 +1,10 @@
 <div class="jumbotron">
-  <p>The ID is {{greeting.id}}</p>
-  <p>The content is not {{greeting.content}}</p>
+  <div ng-show="authenticated">
+    <p>The ID is {{greeting.id}}</p>
+    <p>The content is {{greeting.content}}</p>
+  </div>
+  <div ng-hide="authenticated">
+    <p>Login to see your greeting</p>
+  </div>
 </div>
 
