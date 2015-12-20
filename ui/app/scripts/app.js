@@ -33,5 +33,7 @@ angular
         redirectTo: '/'
       });
 
+    // This prevents Spring from returning authorization methods header and in turn
+    // prevents the browser from showing a basic-auth login form on unauthorized responses
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   });

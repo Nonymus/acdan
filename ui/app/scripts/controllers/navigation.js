@@ -5,13 +5,17 @@
 
 /**
  * @ngdoc function
- * @name acdanuiApp.controller:LoginCtrl
+ * @name acdanuiApp.controller:NavigationCtrl
  * @description
- * # LoginCtrl
+ * # NavigationCtrl
  * Controller of the acdanuiApp
  */
 angular.module('acdanuiApp')
   .controller('NavigationCtrl', function ($scope, $rootScope, $http, $location) {
+
+    $scope.isActive = function (loc) {
+      return loc === $location.path();
+    };
 
     var authenticate = function (credentials, callback) {
       var headers = credentials ? {
@@ -21,6 +25,11 @@ angular.module('acdanuiApp')
 
       $http.get('user', {headers: headers}).success(function (data) {
         $rootScope.authenticated = !!data.name;
+        if (callback) {
+          callback();
+        }
+      }).error(function () {
+        $rootScope.authenticated = false;
         if (callback) {
           callback();
         }
