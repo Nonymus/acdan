@@ -44,7 +44,7 @@
 
             <ul class="nav navbar-nav">
               <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
-              <li ng-class="{ active: isActive('/login')}" ng-hide="authenticated"><a ng-href="#/login">Login</a></li>
+              <li ng-class="{ active: isActive('/login')}" ng-hide="authenticated"><a href="login">Login</a></li>
               <li ng-show="authenticated"><a href="" ng-click="logout()">Logout</a></li>
             </ul>
           </div>

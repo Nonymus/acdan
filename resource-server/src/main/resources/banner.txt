@@ -14,5 +14,5 @@
                                 / /|  / /_/ / /_/ / / / / / / / /_/ /
                                /_/ |_/\____/\__/_/ /_/_/_/ /_/\__, /
                                                              /____/
-                            UI Server ${application.formatted-version}
+                      Resource Server ${application.formatted-version}
                     using Spring Boot ${spring-boot.formatted-version}
