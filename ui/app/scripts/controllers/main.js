@@ -13,7 +13,7 @@ angular.module('acdanuiApp')
     // Value if nothings loaded, i.e. not authenticated
     $scope.greeting = {id: 'xxx', content: 'Hello World'};
 
-    $http.get('resource/').success(function (data) {
+    $http.get('/resource').success(function (data) {
       $scope.greeting = data;
     });
   });

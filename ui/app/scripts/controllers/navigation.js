@@ -17,13 +17,39 @@ angular.module('acdanuiApp')
       return loc === $location.path();
     };
 
-    $http.get('/user').success(function(data){
-      /*jshint -W116 */
-      $rootScope.authenticated = data.name == true;
-      /*jshint +W116 */
-    }).error(function() {
-      $rootScope.authenticated = false;
-    });
+    var authenticate = function (credentials, callback) {
+      var headers = credentials ? {
+        authorization: 'Basic ' + btoa(credentials.username + ':' + credentials.password)
+      } : {};
+
+      $http.get('/user', {headers: headers}).success(function (data) {
+        $rootScope.authenticated = data.name;
+        if (callback) {
+          callback();
+        }
+      }).error(function () {
+        $rootScope.authenticated = false;
+        if (callback) {
+          callback();
+        }
+      });
+    };
+
+    authenticate();
+
+    $scope.credentials= {};
+
+    $scope.login = function() {
+      authenticate($scope.credentials, function() {
+        if ($rootScope.authenticated) {
+          $location.path('/');
+          $scope.error = false;
+        } else {
+          $location.path('/login');
+          $scope.error = true;
+        }
+      });
+    };
 
     $scope.logout = function () {
       $http.post('/logout', {}).success(function () {
