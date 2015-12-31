@@ -1,9 +1,12 @@
-<div class="jumbotron">
-  <div ng-show="authenticated">
-    <p>Have a random UUID: {{greeting.id}}</p>
-    <p>Also, take this semi-static text read from the server: {{greeting.content}}</p>
-  </div>
-  <div ng-hide="authenticated">
-    <p>Login to see something else</p>
+<div class="row">
+  <div class="col-md-12">
+    <div ng-show="authenticated">
+      <p>Have a random UUID: <em>{{greeting.id}}</em></p>
+      <p>Also, take this semi-static text read from the server: <em>{{greeting.content}}</em></p>
+    </div>
+    <div ng-hide="authenticated">
+      <p>Login to see something else</p>
+    </div>
   </div>
 </div>
+
