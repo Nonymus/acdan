@@ -15,12 +15,12 @@ import java.security.Principal;
 @EnableResourceServer
 public class AuthserverApplication {
 
-    @RequestMapping("/user")
-    public Principal user(Principal user) {
-        return user;
-    }
+  @RequestMapping("/user")
+  public Principal user(Principal user) {
+    return user;
+  }
 
-    public static void main(String[] args) {
-        SpringApplication.run(AuthserverApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(AuthserverApplication.class, args);
+  }
 }

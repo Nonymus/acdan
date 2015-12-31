@@ -19,24 +19,28 @@ import java.security.Principal;
 @EnableZuulProxy
 public class GatewayServerApplication extends WebSecurityConfigurerAdapter {
 
-    @RequestMapping("/user")
-    public Principal user(Principal user) {
-        return user;
-    }
+  @RequestMapping("/user")
+  public Principal user(Principal user) {
+    return user;
+  }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .httpBasic().and()
-                .authorizeRequests()
-                // Whitelist static UI
-                .antMatchers("/", "/ui/**/").permitAll()
-                // Require authentication for anything else
-                .anyRequest().authenticated();
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    //@formatter:off
+    http
+      .httpBasic()
+        .and()
+      .authorizeRequests()
+        // Whitelist static UI
+        .antMatchers("/", "/ui/**/")
+        .permitAll()
+        // Require authentication for anything else
+        .anyRequest().authenticated();
+    //@formatter:on
+  }
 
-    public static void main(String[] args) {
-		SpringApplication.run(GatewayServerApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(GatewayServerApplication.class, args);
+  }
 
 }

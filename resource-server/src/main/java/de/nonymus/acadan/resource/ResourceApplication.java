@@ -20,21 +20,21 @@ import java.util.UUID;
 @EnableRedisHttpSession
 public class ResourceApplication extends WebSecurityConfigurerAdapter {
 
-    @RequestMapping("/")
-    public Map<String, Object> home() {
-        Map<String, Object> model = new HashMap<>();
-        model.put("id", UUID.randomUUID().toString());
-        model.put("content", "What's up?");
-        return model;
-    }
+  @RequestMapping("/")
+  public Map<String, Object> home() {
+    Map<String, Object> model = new HashMap<>();
+    model.put("id", UUID.randomUUID().toString());
+    model.put("content", "What's up?");
+    return model;
+  }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic().disable();
-        http.authorizeRequests().anyRequest().authenticated();
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.httpBasic().disable();
+    http.authorizeRequests().anyRequest().authenticated();
+  }
 
-    public static void main(String[] args) {
-        SpringApplication.run(ResourceApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ResourceApplication.class, args);
+  }
 }
